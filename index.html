@@ -3,38 +3,49 @@
 <head>
   <title></title>
   <meta charset="utf-8">
-  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <style type="text/css">
+    .container {
+      padding-top: 200px;
+    }
     #alien {
       font-size: 5em;
     }
-    #sparkles-btn  {
-      
+    #sparkle-btn  {
+      width: 200px;
     }
   </style>
 </head>
 <body>
 
-  <div id="alien">
-    {{ message }} <span v-if="seen">{{ sparkles }}</span>
-
-    <button v-on:click="addSparkles" id="sparkle-btn">Add Sparkles</button>
+  <div id="app" class="container">
+    <div class="row">
+      <span class="col-sm-offset-5 col-sm-2" id="alien"> {{ message }}
+        <span v-if="seen">{{ sparkles }}</span>
+      </span>
+    </div>
+    <div class="row">
+      <button v-on:click="addSparkles" id="sparkle-btn" class="btn btn-default col-sm-offset-5">{{ buttonLabel }}</button>
+    </div>
   </div>
-
-<script type="text/javascript">
-  var app = new Vue({
-    el: '#alien',
-    data: {
-      message: "👽",
-      sparkles: "✨",
-      seen: false
-    },
-    methods: {
-      addSparkles: function() {
-        this.seen = true;
+  
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: "👽",
+        sparkles: "✨",
+        seen: false, 
+        buttonLabel: "Add Sparkles"
+      },
+      methods: {
+        addSparkles: function() {
+          this.seen == true ? this.seen = false: this.seen = true;
+          this.seen == true ? this.buttonLabel = "No Sparkles!" : this.buttonLabel = "Add Sparkles";
+        }
       }
-    }
-  }) 
-</script>
+    }) 
+  </script>
 </body>
 </html>
