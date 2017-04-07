@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/vue"></script>
+  <style type="text/css">
+    #alien {
+      font-size: 5em;
+    }
+    #sparkles-btn  {
+      
+    }
+  </style>
+</head>
+<body>
+
+  <div id="alien">
+    {{ message }} <span v-if="seen">{{ sparkles }}</span>
+
+    <button v-on:click="addSparkles" id="sparkle-btn">Add Sparkles</button>
+  </div>
+
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#alien',
+    data: {
+      message: "👽",
+      sparkles: "✨",
+      seen: false
+    },
+    methods: {
+      addSparkles: function() {
+        this.seen = true;
+      }
+    }
+  }) 
+</script>
+</body>
+</html>
